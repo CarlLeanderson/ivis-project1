@@ -1,0 +1,73 @@
+<html>
+<meta charset="ISO-8859-1">
+
+<head>
+    <!-- Load d3.js -->
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <nav id="buttons">
+        <button class="button" onclick="oninfo()">Information</button>
+        <button class="button" onclick="onquestion()">Questions</button>
+    </nav>
+</head>
+<div id="questions" onclick="offquestion()">
+    <div id="text">
+        <h1>Questions:</h1>
+        <p>Q1 = How would you rate your Information Visualization skills?
+            <p>
+                <p>Q2 = How would you rate your statistical skills?
+                    <p>
+                        <p>Q3 = How would you rate your mathematics skills?
+                            <p>
+                                <p>Q4 = How would you rate your drawing and artistic skills?
+                                    <p>
+                                        <p>Q5 = How would you rate your computer usage skills?
+                                            <p>
+                                                <p>Q6 = How would you rate your programming skills?
+                                                    <p>
+                                                        <p>Q7 = How would you rate your computer graphics programming skills?
+                                                            <p>
+                                                                <p>Q8 = How would you rate your human-computer interaction programming skills?
+                                                                    <p>
+                                                                        <p>Q9 = How would you rate your user experience evaluation skills?
+                                                                            <p>
+                                                                                <p>Q10 = How would you rate your communication skills?
+                                                                                    <p>
+                                                                                        <p>Q11 = How would you rate your collaboration skills?
+                                                                                            <p>
+                                                                                                <p>Q12 = How would you rate your code repository skills?
+                                                                                                    <p>
+    </div>
+</div>
+<div id="information" onclick="offinfo()">
+    <div id="info">
+        <h1>Information</h1>
+        <p>Welcome!</p>
+        <p>This visualization represents 41 students and their profficiency within 12 different areas (Q1 - Q12) </br>
+            </br> Darker shade of green indicates that a student is proficient within an area, while lighter shades of green indicate less proficiency.</br>
+            </br> Click on one of the rectangles to read more about a student</p><img src=range.png style=width:100% class=center>
+        <p>Click on "Questions" to what questions the students answered.</p>
+        <p>The heatmap was created using D3.js</p>
+
+
+    </div>
+</div>
+<center>
+
+    <div id="app">
+        <div id="test"> </div>
+
+        <!-- Create a div where the graph will take place -->
+        <div id="my_dataviz"></div>
+
+    </div>
+</center>
+</body>
+
+
+<!-- Load color palettes -->
+<script src=" https://d3js.org/d3-scale-chromatic.v1.min.js "></script>
+<script src="scripts.js "></script>
+
+
+</html>
