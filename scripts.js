@@ -1,9 +1,7 @@
-//imensions and margins of the graph
 var margin = { top: 100, right: 100, bottom: 300, left: 100 },
     width = 1500 - margin.left - margin.right,
     height = 750 - margin.top - margin.bottom;
 
-// append the svg object to the body of the page
 var svg = d3.select("#my_dataviz")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -12,14 +10,11 @@ var svg = d3.select("#my_dataviz")
     .attr("transform",
         "translate(" + margin.left + "," + margin.top + ")");
 
-//Read the data
-d3.csv("heatmap_data2.csv", function(data) {
+d3.csv("ivis_data.csv", function(data) {
 
-    // Labels of row and columns -> unique identifier of the column called 'group' and 'variable'
     var myGroups = d3.map(data, function(d) { return d.group; }).keys()
     var myVars = d3.map(data, function(d) { return d.variable; }).keys()
 
-    // Build X scales and axis:
     var x = d3.scaleBand()
         .range([0, width])
         .domain(myGroups)
@@ -30,7 +25,6 @@ d3.csv("heatmap_data2.csv", function(data) {
         .call(d3.axisBottom(x).tickSize(0))
         .select(".domain").remove()
 
-    // Build Y scales and axis:
     var y = d3.scaleBand()
         .range([height, 0])
         .domain(myVars)
@@ -40,7 +34,6 @@ d3.csv("heatmap_data2.csv", function(data) {
         .call(d3.axisLeft(y).tickSize(0))
         .select(".domain").remove()
 
-    // Build color scale
     var myColor = d3.scaleSequential()
         .interpolator(d3.interpolateGreens)
         .domain([1, 10])
@@ -55,7 +48,7 @@ d3.csv("heatmap_data2.csv", function(data) {
         .style("margin-bottom", "20px")
     scale
         .html("<img src= range.png style=width:50% class=center>")
-        // create a tooltip
+
     var tooltip = d3.select("#my_dataviz")
         .append("div")
         .style("opacity", 0)
@@ -69,7 +62,6 @@ d3.csv("heatmap_data2.csv", function(data) {
         .style("font-family", "Gill Sans")
         .style("text-align", "left ")
 
-    // Three function that change the tooltip when user hover / move / leave a cell
     var mouseover = function(d) {
 
         d3.selectAll('rect')
@@ -103,7 +95,6 @@ d3.csv("heatmap_data2.csv", function(data) {
             .range([0, 100]);
     }
 
-    // add the squares
     svg.selectAll()
         .data(data, function(d) { return d.group + ':' + d.variable; })
         .enter()
@@ -123,7 +114,6 @@ d3.csv("heatmap_data2.csv", function(data) {
     .on("click", mouseover)
 })
 
-// Add title to graph
 svg.append("text")
     .attr("x", 0)
     .attr("y", -50)
@@ -131,7 +121,6 @@ svg.append("text")
     .style("font-size", "22px")
     .text("IVIS Project 1: Visualize Student Group Formation");
 
-// Add subtitle to graph
 svg.append("text")
     .attr("x", 0)
     .attr("y", -20)
@@ -140,7 +129,6 @@ svg.append("text")
     .style("fill", "grey")
     .style("max-width", 400)
     .text("Click on a rectangle to read more about a student");
-
 
 
 function onquestion() {
